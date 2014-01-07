@@ -1,0 +1,6 @@
+Components:
+  1. Game configuration page
+  2. Clientside game player
+  3. Ability to run gnugo on server
+  4. Ruby bindings to connect and issue commands to gnugo
+  5. High level ruby gnugo api
