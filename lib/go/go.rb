@@ -1,5 +1,8 @@
 $gofile = '/Users/dbe/Desktop/game.sgf'
 
+class UnknownCommandError < StandardError
+end
+
 class GnuGo
   
   def initialize()
@@ -10,7 +13,13 @@ class GnuGo
   #TODO: make private
   def send_message(message)
     @io.puts(message)
-    return @io.gets()
+    ret = @io.gets()
+
+    if ret == "? unknown command\n"
+      raise UnknownCommandError
+    end
+
+    return ret
   end
 
   def get_komi()
@@ -19,13 +28,16 @@ class GnuGo
 end
 
 
-puts "First"
-gg = GnuGo.new()
+#puts "First"
+#gg = GnuGo.new()
 
-puts "Second"
-puts gg.get_komi()
+#puts "Second"
+#puts gg.get_komi()
 
-puts "Exit"
+#puts "Third"
+#puts gg.fuck().inspect
+
+#puts "Exit"
 
 
 
